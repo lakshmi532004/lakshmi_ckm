@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Data Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+    <div class="logo">Health Visualizer</div>
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="login.html" id="loginLink">Login</a></li>
+        
+    </ul>
+</nav>
+
+<!-- Home Section -->
+<section id="home">
+    <h1>Visualize Your Health Data</h1>
+    <p>Your health is your wealth. Track, understand, and improve your well-being with data-driven insights.</p>
+</section>
+
+<!-- Services Section -->
+<section id="services">
+    <h2>Our Services</h2>
+    <div class="service-item">
+        <h3>Heart Rate Calculation With Comprehensive Health Tracking.</h3>
+        <p>
+            Our platform offers a comprehensive suite of tools to help you monitor and improve your health:
+        </p>
+        <ul>
+            <li>Heart Rate Calculation: Monitor your cardiovascular health.</li>
+            <li>Sleep Patterns: Analyze your sleep for better rest.</li>
+            <li>Exercise Routines: Track your fitness progress.</li>
+            <li>Calories Burned: Stay on top of your dietary goals.</li>
+        </ul>
+        <a href="visu.html" id="serviceVisuLink">Explore the Health Visualizer</a> <!-- Link to visu.html -->
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+    <h2>About Us</h2>
+    <p>
+        Welcome to the Health Visualizer, your personalized tool for tracking and improving your health. Our platform helps you monitor
+        key health metrics like heart rate, calories burned, exercise routines , and sleep patterns. With interactive graphs and detailed
+        visualizations , we transform raw health data into meaningful insights, empowering you to make informed decisions for a healthier 
+        lifestyle.
+    </p>
+    <p>
+        Our goal is to empower individuals to make informed decisions about their health by providing actionable insights in a visually appealing manner.
+    </p>
+    <p>
+        Discover your potential for the better health with the Healht Data Visualizer today!!
+    </p>
+</section>
+
+<!-- Footer -->
+<footer>
+    &copy; 2024 Health Data Visualizer. All Rights Reserved.
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const loginLink = document.getElementById('loginLink');
+        
+        const serviceVisuLink = document.getElementById('serviceVisuLink');
+
+        // Check if the user is logged in
+        const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+
+        if (isLoggedIn) {
+            loginLink.textContent = 'Logout'; // Change 'Login' to 'Logout'
+            
+            serviceVisuLink.style.display = 'inline'; // Show the 'Explore the Health Visualizer' link in services
+        } else {
+            loginLink.textContent = 'Login'; // Default to 'Login'
+            
+            serviceVisuLink.style.display = 'none'; // Hide the 'Explore the Health Visualizer' link
+        }
+
+        // Logout functionality
+        loginLink.addEventListener('click', function () {
+            if (isLoggedIn) {
+                localStorage.setItem('loggedIn', 'false'); // Log the user out
+                location.reload(); // Reload the page to update the navbar
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

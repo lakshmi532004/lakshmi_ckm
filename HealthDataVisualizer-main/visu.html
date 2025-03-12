@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Data Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* General Styles */
+       
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+    <div class="logo">Health Visualizer</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="login.html" id="loginLink">Login</a></li>
+        
+    </ul>
+</nav>
+
+<!-- Health Data Visualizer Section -->
+<div class="container">
+    <h1>Health Data Visualizer</h1>
+
+    <!-- Form for user input -->
+    <form id="dataForm">
+        <!-- Heart Rate Input -->
+        <div class="input-group">
+            <label for="heartRateInput">Heart Rate Over Time (comma-separated values, e.g., 70,75,80):</label>
+            <input type="text" id="heartRateInput" required>
+        </div>
+
+        <!-- Time Input for Heart Rate -->
+        <div class="input-group">
+            <label for="timeInput">Time (comma-separated values, e.g., 8 AM,10 AM,12 PM):</label>
+            <input type="text" id="timeInput" required>
+        </div>
+
+        <!-- Calories Burned Input -->
+        <div class="input-group">
+            <label for="caloriesInput">Calories Burned (comma-separated, e.g., 500,300,400):</label>
+            <input type="text" id="caloriesInput" required>
+        </div>
+
+        <!-- Activity Labels Input -->
+        <div class="input-group">
+            <label for="activityLabelsInput">Activities (comma-separated, e.g., Running,Walking,Cycling):</label>
+            <input type="text" id="activityLabelsInput" required>
+        </div>
+
+        <!-- Sleep Hours Input -->
+        <div class="input-group">
+            <label for="sleepHoursInput">Sleep Hours (comma-separated, e.g., 6,7,8):</label>
+            <input type="text" id="sleepHoursInput" required>
+        </div>
+
+        <!-- Sleep Quality Input -->
+        <div class="input-group">
+            <label for="sleepQualityInput">Sleep Quality (%) (comma-separated, e.g., 60,75,80):</label>
+            <input type="text" id="sleepQualityInput" required>
+        </div>
+
+        <!-- Exercise Duration Input -->
+        <div class="input-group">
+            <label for="exerciseDurationInput">Exercise Duration (minutes, comma-separated, e.g., 30,45,60):</label>
+            <input type="text" id="exerciseDurationInput" required>
+        </div>
+
+        <!-- Exercise Intensity Input -->
+        <div class="input-group">
+            <label for="exerciseIntensityInput">Exercise Intensity (%) (comma-separated, e.g., 70,80,85):</label>
+            <input type="text" id="exerciseIntensityInput" required>
+        </div>
+
+        <button type="submit">Generate Visualizations</button>
+        <!-- Add a Clear Data button in your HTML -->
+        <button id="clearDataButton" type="button">Clear Data</button>
+
+        <button id="DummyDataButton" type="button">Dummy data</button>
+    </form>
+
+    <!-- Visualizations -->
+    <div class="chart-container">
+        <h2>Heart Rate Over Time</h2>
+        <canvas id="heartRateChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <h2>Calories Burned</h2>
+        <canvas id="caloriesChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <h2>Sleep Patterns (Hours vs. Quality)</h2>
+        <canvas id="sleepPatternChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <h2>Exercise Routines (Duration vs. Intensity)</h2>
+        <canvas id="exerciseChart"></canvas>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    &copy; 2024 Health Data Visualizer. All Rights Reserved.
+</footer>
+
+<script src="script.js"></script>
+
+<script>
+    // Navbar Login/Logout Logic
+    document.addEventListener('DOMContentLoaded', function () {
+        const loginLink = document.getElementById('loginLink');
+        
+
+        // Check if the user is logged in
+        const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+
+        if (isLoggedIn) {
+            loginLink.textContent = 'Logout'; // Change 'Login' to 'Logout'
+        } else {
+            loginLink.textContent = 'Login'; // Default to 'Login'
+            
+        }
+
+        // Logout functionality
+        loginLink.addEventListener('click', function () {
+            if (isLoggedIn) {
+                localStorage.setItem('loggedIn', 'false'); // Log the user out
+                location.reload(); // Reload the page to update the navbar
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

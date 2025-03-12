@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .error-message {
+        color: red;
+        display: none;
+        font-size: 0.875rem;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: url("imgs/Wavelogo.gif") no-repeat center center/cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <form class="login-form" id="loginForm" method="POST">
+        <h2>Login</h2>
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter your username"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+          />
+          <!-- Error message will be displayed here -->
+          <p id="passwordError" class="error-message">
+            Password must be at least 8 characters, include both uppercase and
+            lowercase letters, numbers, and special characters.
+          </p>
+        </div>
+        <button type="submit" class="btn">Login</button>
+      </form>
+    </div>
+
+    <script>
+      // JavaScript for password validation and login handling
+      const loginForm = document.getElementById("loginForm");
+      const passwordInput = document.getElementById("password");
+      const passwordError = document.getElementById("passwordError");
+
+      loginForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+
+        const password = passwordInput.value;
+
+        // Strong password requirements pattern
+        const strongPasswordPattern =
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
+
+        // Check if the password meets the strong requirements
+        if (!strongPasswordPattern.test(password)) {
+          passwordError.style.display = "block"; // Show error message
+        } else {
+          passwordError.style.display = "none"; // Hide error message
+
+          // If login is successful, set the loggedIn status and redirect to the homepage
+          localStorage.setItem("loggedIn", "true");
+          window.location.href = "index.html"; // Redirect to index.html (homepage)
+        }
+      });
+    </script>
+  </body>
+</html>
